@@ -2,7 +2,6 @@
 #include "canvas.hpp"
 
 void Gen::create( const int SIZE ){
-	// A simple constructor function
 	this->screen = new Canvas;
 	this->screen->create_screen(SIZE, SIZE);
 }
@@ -12,42 +11,51 @@ void Gen::free( void ){
 	delete this->screen;
 }
 
-void Gen::next( void ){
-	int counter = 0;
+bool Gen::next( void ){
+	int counter = 0; 	// A simple counter variable, to simplify things
+
+	// If the had_changed stays false in the entire function, it means that the
+	// generation is stable.
+	bool had_changed = false;
+
 	for( int i = 0; i < this->screen->height; i++ ){
 		for( int j = 0; j < this->screen->width; j++ ){
-			counter = check_nearby( i, j );	
+			this->screen->pixel[i][j].nearby = check_nearby( i, j );	
+			counter = this->screen->pixel[i][j].nearby;
 			bool is_alive = screen->pixel[i][j].is_alive();
 
 			if( counter <= 1 ){
 				// cell dies
-				// std::cout << "cell dies" << std::endl;
-				this->screen->pixel[i][j].set_next(false);
+				had_changed = this->screen->pixel[i][j].set_next(false, had_changed);
 			}
 
 			else if( counter >= 4 and is_alive == true){
 				// cell dies
-				// std::cout << "cell dies" << std::endl;
-				this->screen->pixel[i][j].set_next(false);
+				had_changed = this->screen->pixel[i][j].set_next(false, had_changed);
 			}
 
 			else if( (counter == 2 or counter == 3) and is_alive == true){
 				// cell remains alive
-				// std::cout << "cell lives" << std::endl;
-				this->screen->pixel[i][j].set_next(true);
+				had_changed = this->screen->pixel[i][j].set_next(true, had_changed);
 			}
 
 			else if( is_alive == false and counter == 3 ){
 				// cell borns
-				// std::cout << "cell lives" << std::endl;
-				this->screen->pixel[i][j].set_next(true);
+				had_changed = this->screen->pixel[i][j].set_next(true, had_changed);
 			}
 	
 			else {
 				// cell remains dead
-				this->screen->pixel[i][j].set_next(false);
+				had_changed = this->screen->pixel[i][j].set_next(false, had_changed);
 			}
 		}
+	}
+	if( had_changed == false ){
+		std::cout << "Não mudou nada, é estável (ou morto)!" << std::endl;
+		return true;	// it's stable
+	} else {
+		std::cout << "Mudou algo!" << std::endl;
+		return false;	// it's not stable
 	}
 }
 
@@ -63,7 +71,7 @@ void Gen::random_it( void ){
 	std::mt19937 random (std::chrono::system_clock::now().time_since_epoch().count());
 	for(int i = 0; i < screen->height; i++){
 		for(int j = 0; j < screen->width; j++){
-			screen->pixel[i][j].set_alive(random() % 2);
+			screen->pixel[i][j].init_alive(random() % 2, random() % 2);
 		}
 	}
 }

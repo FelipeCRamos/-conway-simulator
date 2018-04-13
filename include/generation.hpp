@@ -20,10 +20,13 @@ class Gen{
 	public:
 		void create( const int ); // will create an generation
 		void free( void );
-		void next( void ); // will update generation
+
+		bool next( void ); // will update generation
 		void update( void ); 
 		void random_it( void );
 		void print( char, char, char );
+
+		bool is_stable( int, int );
 		int check_nearby( int, int );
 		Borders *correct_borders( int, int, Borders *);
 };
