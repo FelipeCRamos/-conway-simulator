@@ -3,54 +3,58 @@
 
 void Gen::create( const int SIZE ){
 	// A simple constructor function
-	screen = new Canvas;
-	// n_screen = new Canvas;
-	screen->create_screen(SIZE, SIZE);
-	// n_screen->create_screen(SIZE, SIZE);
+	this->screen = new Canvas;
+	this->screen->create_screen(SIZE, SIZE);
 }
 
 void Gen::free( void ){
-	screen->free_screen();
-	delete screen;
-	// n_screen->free_screen();
-	// delete n_screen;
+	this->screen->free_screen();
+	delete this->screen;
 }
 
 void Gen::next( void ){
 	int counter = 0;
-	for( int i = 0; i < screen->height; i++ ){
-		for( int j = 0; j < screen->width; j++ ){
+	for( int i = 0; i < this->screen->height; i++ ){
+		for( int j = 0; j < this->screen->width; j++ ){
 			counter = check_nearby( i, j );	
-			bool is_alive = screen->screen[i][j].is_alive();
+			bool is_alive = screen->pixel[i][j].is_alive();
 
 			if( counter <= 1 ){
 				// cell dies
 				// std::cout << "cell dies" << std::endl;
-				screen->screen[i][j].set_alive(false);
+				this->screen->pixel[i][j].set_next(false);
 			}
 
 			else if( counter >= 4 and is_alive == true){
 				// cell dies
 				// std::cout << "cell dies" << std::endl;
-				screen->screen[i][j].set_alive(false);
+				this->screen->pixel[i][j].set_next(false);
 			}
 
 			else if( (counter == 2 or counter == 3) and is_alive == true){
 				// cell remains alive
 				// std::cout << "cell lives" << std::endl;
-				screen->screen[i][j].set_alive(true);
+				this->screen->pixel[i][j].set_next(true);
 			}
 
 			else if( is_alive == false and counter == 3 ){
 				// cell borns
 				// std::cout << "cell lives" << std::endl;
-				screen->screen[i][j].set_alive(true);
+				this->screen->pixel[i][j].set_next(true);
 			}
 	
 			else {
 				// cell remains dead
-				screen->screen[i][j].set_alive(false);
+				this->screen->pixel[i][j].set_next(false);
 			}
+		}
+	}
+}
+
+void Gen::update( void ){
+	for( int i = 0; i < this->screen->height; i++ ){
+		for( int j = 0; j < this->screen->width; j++ ){
+			this->screen->pixel[i][j].update();
 		}
 	}
 }
@@ -59,7 +63,7 @@ void Gen::random_it( void ){
 	std::mt19937 random (std::chrono::system_clock::now().time_since_epoch().count());
 	for(int i = 0; i < screen->height; i++){
 		for(int j = 0; j < screen->width; j++){
-			screen->screen[i][j].set_alive(random() % 2);
+			screen->pixel[i][j].set_alive(random() % 2);
 		}
 	}
 }
@@ -93,11 +97,11 @@ int Gen::check_nearby( int height, int width ){
 	for( int i = border->ymin; i <= border->ymax; i++ ){
 		for( int j = border->xmin; j <= border->xmax; j++ ){
 			if( i == 0 and j == 0 ){
-				// std::cout << "\e[1;4m\x1b[32m" << screen->screen[height+i][width+j].is_alive() << "\e[0m\x1b[0m ";
+				// std::cout << "\e[1;4m\x1b[32m" << screen->pixel[height+i][width+j].is_alive() << "\e[0m\x1b[0m ";
 			} else{
-				if( screen->screen[height+i][width+j].is_alive() == true )
+				if( screen->pixel[height+i][width+j].is_alive() == true )
 					count++;
-				// std::cout << screen->screen[height+i][width+j].is_alive() << " ";
+				// std::cout << screen->pixel[height+i][width+j].is_alive() << " ";
 			}
 		}
 		// std::cout << std::endl;

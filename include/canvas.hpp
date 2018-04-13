@@ -7,7 +7,7 @@ class Canvas{
 	public:
 		int width;
 		int height;
-		Cell **screen;
+		Cell **pixel;
 		void create_screen( int, int );
 		void free_screen( void );
 		void print( char, char, char );

@@ -2,13 +2,21 @@
 
 // CELL SECTION
 void Cell::set_alive( bool value ){
-	state = value;	
+	this->state = value;	
+}
+
+void Cell::set_next( bool value ){
+	this->next_state = value;
+}
+
+void Cell::update( void ){
+	this->state = this->next_state;
 }
 
 bool Cell::is_alive( void ){
-	return state;
+	return this->state;
 }
 	
 void Cell::incrementAge( int ageIncrement ){
-	age += ageIncrement;
+	this->age += ageIncrement;
 }
