@@ -17,7 +17,7 @@ int main( int argc, char **argv ) {
 
 	char buf; // A buffer variable
 
-	for(int i = 0; i < 400; i++){
+	for(int i = 0; i < 10; i++){
 		system("clear");
 		std::cout << "Generation: " << i << std::endl;
 		current_gen->next();
@@ -27,6 +27,7 @@ int main( int argc, char **argv ) {
 	}
 
 	current_gen->free();
+	delete current_gen;
 
 	return 0;
 }
