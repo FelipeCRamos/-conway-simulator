@@ -7,13 +7,9 @@ class Cell{
 		int age; 	// how many generations that cell is alive
 		bool state; // tells if the cell is alive or not
 	public:
-		int x, y; 	// position in matrix
-
-		void alive( bool );
-		bool isalive( void );
-		void set_pos( int, int );
+		void set_alive( bool );
+		bool is_alive( void );
 		void incrementAge( int );
 };
-
 
 #endif

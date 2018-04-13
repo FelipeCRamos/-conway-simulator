@@ -1,25 +1,24 @@
 #include <iostream>
-#include "utils.hpp"
+#include "util.hpp" // utils lib (Cell things)
+#include "canvas.hpp" // canvas functions (print, next_gen..)
+#include "generation.hpp" // generation functions
 
 int main( int argc, char **argv ) {
-	int canvas = 30;
-	int pow_canvas = canvas * canvas;
-	Cell *screen = new Cell[ pow_canvas ];
-	for( int i = 0; i < canvas; i++ ){
-		for( int j = 0; j < canvas; j++){
-			if(j % 2 == 0)
-				screen[ i * canvas + j ].alive(true);
-			else
-				screen[ i * canvas + j ].alive(false);
-		}
-	}
+	const int SIZE = 40;
 
-	for( int i = 0; i < canvas; i++ ){
-		for( int j = 0; j < canvas; j++){
-			std::cout << screen[ i*canvas + j ].isalive() << " ";	
-		}
+	// Generation inicializer
+	Gen *current_gen = new Gen;
+	current_gen->create( SIZE );
+
+	for(int i = 0; i < 3; i++){
+		std::cout << "Generation: " << i << std::endl;
+		current_gen->next();
+		current_gen->random_it();
+		current_gen->print();
 		std::cout << std::endl;
 	}
-	
+
+	current_gen->free();
+
 	return 0;
 }
