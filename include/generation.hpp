@@ -2,7 +2,7 @@
 #define GENERATION_HPP_
 
 #include <iostream>
-#include "util.hpp"
+#include "cell.hpp"
 #include "canvas.hpp"
 #include <chrono>
 #include <random>

@@ -1,5 +1,5 @@
-#ifndef UTILS_HPP_
-#define UTILS_HPP_
+#ifndef CELL_HPP_
+#define CELL_HPP_
 #include <iostream>
 
 class Cell{
@@ -10,7 +10,10 @@ class Cell{
 		bool next_state; 
 	public:
 		int nearby;
-		void init_alive( bool, bool );
+		Cell( void );
+		Cell( bool, bool );
+
+		void rand_alive( bool, bool );
 		void set_alive( bool );
 		bool set_next( bool, bool );
 		void update( void );

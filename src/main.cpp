@@ -1,14 +1,15 @@
+/* Author: Felipe Ramos */
 #include <iostream>
-#include <thread> // Using sleep thread function
-#include <chrono> // Using time functions
+#include <thread> 			// Using sleep thread function
+#include <chrono> 			// Using time functions
 
-#include "util.hpp" // Cells classes implementations
-#include "canvas.hpp" // Everything related to screen, canvas
-#include "generation.hpp" // Everything related to generating new patterns
+#include "cell.hpp" 		// Cells classes implementations
+#include "canvas.hpp" 		// Everything related to screen, canvas
+#include "generation.hpp" 	// Everything related to generating new patterns
 
 int main( int argc, char **argv ) {
 	// TODO: implement argv size
-	const int SIZE = 5;
+	const int SIZE = 30;
 
 	// Generation inicializer
 	Gen *current_gen = new Gen( SIZE );
@@ -38,7 +39,7 @@ int main( int argc, char **argv ) {
 
 		// This will print current generation based on:
 		// separator, alive_cells, dead_cells
-		current_gen->print(' ', '*', '-');
+		current_gen->print(' ', '*', ' ');
 
 		if(stable == true)
 			stable_count++;
@@ -53,7 +54,6 @@ int main( int argc, char **argv ) {
 	std::cout << "Simulation complete!" << std::endl;
 
 	// free of the allocated variables
-	// current_gen->free(); // this will free
 	delete current_gen;
 
 	return 0;

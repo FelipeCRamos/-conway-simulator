@@ -17,11 +17,11 @@ bindir = ./bin
 CC = g++
 CFLAGS = -Wall -g -ggdb -std=c++11 -I. -I$(incdir)
 RM = -rm
-OBJS = $(addprefix $(objdir)/,util.o generation.o canvas.o)
+OBJS = $(addprefix $(objdir)/,cell.o generation.o canvas.o)
 
 # Phony targets
 .PHONY: clean cleanobj cleanbin cleansym
-.PHONY: all run main build util generation canvas
+.PHONY: all run main build cell generation canvas
 
 
 # Use "make" to execute everything
@@ -34,23 +34,23 @@ run: build main conway
 main: conway 
 
 # Use "make build" to build all the modules
-build: util generation canvas
+build: cell generation canvas
 
 # Use "make <name>" to build only the <name> module
-util: $(objdir)/util.o
+cell: $(objdir)/cell.o
 generation: $(objdir)/generation.o
 canvas: $(objdir)/canvas.o
 
 # Compiles the main
 conway: $(srcdir)/main.cpp $(OBJS)
-	mkdir -p $(bindir)
-	$(CC) $(CFLAGS) $^ -o $(bindir)/$@
+	@mkdir -p $(bindir)
+	@$(CC) $(CFLAGS) $^ -o $(bindir)/$@
 	@ln -sFv $(bindir)/$@ $@
 	@echo "Symlink created with sucess! To execute just type ./$@\n\n"
 
 
-# Builds only the util module
-$(objdir)/util.o: $(srcdir)/util.cpp $(incdir)/util.hpp
+# Builds only the cell module
+$(objdir)/cell.o: $(srcdir)/cell.cpp $(incdir)/cell.hpp
 	mkdir -p $(objdir)
 	$(CC) $(CFLAGS) -c $< -o $@
 

@@ -11,15 +11,6 @@ Gen::~Gen( void ){
 	delete this->screen;
 }
 
-// void Gen::create( const int SIZE ){
-//     this->screen = new Canvas(SIZE, SIZE);
-// }
-
-// void Gen::free( void ){
-	// this->screen->free_screen();
-	// delete this->screen;
-// }
-
 bool Gen::next( void ){
 	int counter = 0; 	// A simple counter variable, to simplify things
 
@@ -60,12 +51,12 @@ bool Gen::next( void ){
 		}
 	}
 	if( had_changed == false ){
-		std::cout << "Não mudou nada, é estável (ou morto)!" << std::endl;
-		return true;	// it's stable
-	} else {
-		std::cout << "Mudou algo!" << std::endl;
+		std::cout << "Stable / Extint!" << std::endl;
+		return true;	// it's stable } else {
+		std::cout << "Not Stable!" << std::endl;
 		return false;	// it's not stable
 	}
+	return false;
 }
 
 void Gen::update( void ){
@@ -80,7 +71,7 @@ void Gen::random_it( void ){
 	std::mt19937 random (std::chrono::system_clock::now().time_since_epoch().count());
 	for(int i = 0; i < screen->height; i++){
 		for(int j = 0; j < screen->width; j++){
-			screen->pixel[i][j].init_alive(random() % 2, random() % 2);
+			screen->pixel[i][j].rand_alive(random() % 2, random() % 2);
 		}
 	}
 }
@@ -107,23 +98,22 @@ int Gen::check_nearby( int height, int width ){
 	Borders *border = new Borders;
 	int count = 0;
 
-	if( !(height <= 0 and height >= screen->height-1) or (width <= 0 and width >= screen->width-1) ){
+	if(
+		!( height <= 0 and height >= screen->height - 1 ) or 
+		( width <= 0 and width >= screen->width - 1 )
+	){
 		border = correct_borders( height, width, border );
 	}
 
 	for( int i = border->ymin; i <= border->ymax; i++ ){
 		for( int j = border->xmin; j <= border->xmax; j++ ){
 			if( i == 0 and j == 0 ){
-				// std::cout << "\e[1;4m\x1b[32m" << screen->pixel[height+i][width+j].is_alive() << "\e[0m\x1b[0m ";
 			} else{
 				if( screen->pixel[height+i][width+j].is_alive() == true )
 					count++;
-				// std::cout << screen->pixel[height+i][width+j].is_alive() << " ";
 			}
 		}
-		// std::cout << std::endl;
 	}	
-	// std::cout << "Returning count: " << count << std::endl;
 
 	delete border;
 	return count;
