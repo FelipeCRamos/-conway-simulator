@@ -8,13 +8,10 @@
 
 int main( int argc, char **argv ) {
 	// TODO: implement argv size
-	const int SIZE = 50;
+	const int SIZE = 5;
 
 	// Generation inicializer
-	Gen *current_gen = new Gen;
-	if(!current_gen)
-		return 1;
-	current_gen->create( SIZE );
+	Gen *current_gen = new Gen( SIZE );
 
 	// Will populate the generation with random cells 
 	current_gen->random_it();
@@ -56,7 +53,7 @@ int main( int argc, char **argv ) {
 	std::cout << "Simulation complete!" << std::endl;
 
 	// free of the allocated variables
-	current_gen->free(); // this will free
+	// current_gen->free(); // this will free
 	delete current_gen;
 
 	return 0;

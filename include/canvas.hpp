@@ -5,6 +5,8 @@
 
 class Canvas{
 	public:
+		Canvas( int, int );
+		~Canvas( void );
 		int width;
 		int height;
 		Cell **pixel;

@@ -18,6 +18,8 @@ class Gen{
 		Canvas *screen;
 		int age = 0;
 	public:
+		Gen( const int );
+		~Gen( void );
 		void create( const int ); // will create an generation
 		void free( void );
 

@@ -1,16 +1,34 @@
 #include "canvas.hpp"
 
-void Canvas::create_screen( int x, int y ){
-	// record values on the class private members
+Canvas::Canvas( int x, int y ){
 	this->width = x;
 	this->height = y;
 
-	// then, allocate the screen
+	// then, we allocate the canvas
 	this->pixel = new Cell *[height];
 	for( int i = 0; i < this->height; i++ ){
 		this->pixel[i] = new Cell[this->width];
 	}
 }
+
+Canvas::~Canvas( void ){
+	for( int i = 0; i < this->height; i++ ){
+		delete[] this->pixel[i];
+	}
+	delete[] this->pixel;
+}
+
+// void Canvas::create_screen( int x, int y ){
+//     // record values on the class private members
+//     this->width = x;
+//     this->height = y;
+//
+//     // then, allocate the screen
+//     this->pixel = new Cell *[height];
+//     for( int i = 0; i < this->height; i++ ){
+//         this->pixel[i] = new Cell[this->width];
+//     }
+// }
 
 void Canvas::free_screen( void ){
 	for(int i = 0; i < height; i++ ){

@@ -1,15 +1,24 @@
 #include "generation.hpp"
 #include "canvas.hpp"
 
-void Gen::create( const int SIZE ){
-	this->screen = new Canvas;
-	this->screen->create_screen(SIZE, SIZE);
+Gen::Gen( const int SIZE ){
+	// Object Gen Constructor that creates an bidimensional canvas size * size.
+	this->screen = new Canvas(SIZE, SIZE);
 }
 
-void Gen::free( void ){
-	this->screen->free_screen();
+Gen::~Gen( void ){
+	// Object Gen destructor
 	delete this->screen;
 }
+
+// void Gen::create( const int SIZE ){
+//     this->screen = new Canvas(SIZE, SIZE);
+// }
+
+// void Gen::free( void ){
+	// this->screen->free_screen();
+	// delete this->screen;
+// }
 
 bool Gen::next( void ){
 	int counter = 0; 	// A simple counter variable, to simplify things
