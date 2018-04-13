@@ -19,10 +19,14 @@ void Canvas::free_screen( void ){
 	delete[] screen;
 }
 
-void Canvas::print( char separator ){
+void Canvas::print( char separator, char alive_c, char dead_c ){
 	for( int i = 0; i < height; i++ ){
 		for( int j = 0; j < width; j++ ){
-			std::cout << screen[i][j].is_alive() << separator;
+			if( screen[i][j].is_alive() == true ){
+				std::cout << alive_c << separator;
+			} else {
+				std::cout << dead_c << separator;
+			}
 		}
 		std::cout << std::endl;
 	}	

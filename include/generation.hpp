@@ -16,13 +16,15 @@ class Borders{
 class Gen{
 	private:
 		Canvas *screen;
+		Canvas *n_screen;
 		int age = 0;
 	public:
 		void create( const int ); // will create an generation
+		void update( void ); 
 		void free( void );
 		void next( void ); // will update generation
 		void random_it( void );
-		void print( void );
+		void print( char, char, char );
 		int check_nearby( int, int );
 		Borders *correct_borders( int, int, Borders *);
 };

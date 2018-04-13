@@ -10,7 +10,7 @@ class Canvas{
 		Cell **screen;
 		void create_screen( int, int );
 		void free_screen( void );
-		void print( char );
+		void print( char, char, char );
 		void next_gen( long int * );
 };
 
