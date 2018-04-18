@@ -17,29 +17,30 @@ bindir = ./bin
 CC = g++
 CFLAGS = -Wall -g -ggdb -std=c++11 -I. -I$(incdir)
 RM = -rm
-OBJS = $(addprefix $(objdir)/,cell.o generation.o canvas.o)
+OBJS = $(addprefix $(objdir)/,cell.o generation.o canvas.o io.o)
 
 # Phony targets
 .PHONY: clean cleanobj cleanbin cleansym
-.PHONY: all run main build cell generation canvas
+.PHONY: all run main build cell generation canvas io
 
 
 # Use "make" to execute everything
 all: build main
 
 # Use "make run" to compile and execute everything
-run: build main conway 
+run: build main conway
 
 # Use "make main" to compile the main
-main: conway 
+main: conway
 
 # Use "make build" to build all the modules
-build: cell generation canvas
+build: cell generation canvas io
 
 # Use "make <name>" to build only the <name> module
 cell: $(objdir)/cell.o
 generation: $(objdir)/generation.o
 canvas: $(objdir)/canvas.o
+io: $(objdir)/io.o
 
 # Compiles the main
 conway: $(srcdir)/main.cpp $(OBJS)
@@ -64,8 +65,13 @@ $(objdir)/canvas.o: $(srcdir)/canvas.cpp $(incdir)/canvas.hpp
 	mkdir -p $(objdir)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Builds only the io module
+$(objdir)/io.o: $(srcdir)/io.cpp $(incdir)/io.hpp
+	mkdir -p $(objdir)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 # Removes all objects
-cleanobj: 
+cleanobj:
 	$(RM) $(objdir)/*.o
 
 # Clean all executables

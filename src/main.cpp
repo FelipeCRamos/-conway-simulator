@@ -1,15 +1,18 @@
 /* Author: Felipe Ramos */
 #include <iostream>
+#include <fstream>
 #include <thread> 			// Using sleep thread function
 #include <chrono> 			// Using time functions
 
 #include "cell.hpp" 		// Cells classes implementations
 #include "canvas.hpp" 		// Everything related to screen, canvas
 #include "generation.hpp" 	// Everything related to generating new patterns
+#include "io.hpp" 			// All the Input/Output functions (.dat reading)
 
 int main( int argc, char **argv ) {
+
 	// TODO: implement argv size
-	const int SIZE = 30;
+	const int SIZE = 10;
 
 	// Generation inicializer
 	Gen *current_gen = new Gen( SIZE );
