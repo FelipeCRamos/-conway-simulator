@@ -2,10 +2,13 @@
 #define GENERATION_HPP_
 
 #include <iostream>
-#include "cell.hpp"
-#include "canvas.hpp"
 #include <chrono>
 #include <random>
+#include <functional>
+
+#include "cell.hpp"
+#include "canvas.hpp"
+#include "sha256.hpp"
 
 class Borders{
 	public:
@@ -16,19 +19,21 @@ class Borders{
 class Gen{
 	private:
 		Canvas *screen;
-		std::hash<Canvas *> ha;
-		// TODO: Create and store hash for future comparisson
-		int age = 0;
 	public:
+		size_t age = 0;
+
 		Gen( const int );
 		~Gen( void );
 		// void create( const int ); // will create an generation
 		// void free( void );
 
-		bool next( void ); // will update generation
-		void update( void ); 
-		void generate_hash( void );
-		size_t acess_hash( void );
+		void next( void ); 		// will update generation
+		void update( void );
+		
+		// Hashing related functions
+		std::string hash( void );
+		bool check_hash( std::vector<std::string> &hash_table, std::string current_hash, size_t min_times, size_t &counter );
+
 		void random_it( void );
 		void print( char, char, char );
 

@@ -13,9 +13,8 @@ class Cell{
 		Cell( void );
 		Cell( bool, bool );
 
-		void rand_alive( bool, bool );
 		void set_alive( bool );
-		bool set_next( bool, bool );
+		void set_next( bool );
 		void update( void );
 		bool is_alive( void );
 		void incrementAge( int );

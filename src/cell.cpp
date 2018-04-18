@@ -10,26 +10,12 @@ Cell::Cell( bool current_val, bool prev_val ){
 	this->prev_state = prev_val;
 }
 
-void Cell::rand_alive( bool value, bool prev ){
-	this->state = value;
-	this->prev_state = prev;
-}
-
 void Cell::set_alive( bool value ){
 	this->state = value;	
 }
 
-bool Cell::set_next( bool next_val, bool had_changed_flag ){
-	if( this->state == next_val or this->prev_state == next_val ){
-		// then, the element is cicling through states
-		this->next_state = next_val;
-		// And we will return the current flag,
-		// since he basically didn't changed
-		return had_changed_flag; 
-	} else {
-		this->next_state = next_val;
-		return true;	// Then, it has changed!
-	}
+void Cell::set_next( bool next_val ){
+	this->next_state = next_val;
 }
 
 void Cell::update( void ){

@@ -1,63 +1,69 @@
 /* Author: Felipe Ramos */
-#include <iostream>
-#include <fstream>
+
+#include <iostream>			// std:: related functions
+#include <fstream>			// input/output files
 #include <thread> 			// Using sleep thread function
 #include <chrono> 			// Using time functions
+#include <vector>			// used to store sha256 strings
 
+#include "sha256.hpp"		// To generate hashes of a given string
 #include "cell.hpp" 		// Cells classes implementations
 #include "canvas.hpp" 		// Everything related to screen, canvas
 #include "generation.hpp" 	// Everything related to generating new patterns
-#include "io.hpp" 			// All the Input/Output functions (.dat reading)
 
-int main( int argc, char **argv ) {
-
-	// TODO: implement argv size
+int main( int argc, char **argv )
+{
+	
 	const int SIZE = 10;
+	const int MATCH_LIMIT = 3;
 
 	// Generation inicializer
-	Gen *current_gen = new Gen( SIZE );
+	Gen current_gen( SIZE );
 
 	// Will populate the generation with random cells 
-	current_gen->random_it();
+	current_gen.random_it();
+	current_gen.hash(); // generate first hash for the generation
 
-	// Control variables
-	bool stable = false; 	// If the generation is stable, stable = true;
-	int stable_count = 0;	// How many stable generations has been
-	int i = 0;				// Simple generation counter
 
+	// hashes vector
+	std::vector<std::string> hashes_table;
 
 	while(true){
 		// Header
 		system("clear");
-		std::cout << "Generation: " << i++ << std::endl;
+		std::cout << ">> Generation Age: " << current_gen.age++ << std::endl;
 
-		// will return true if stability is detected
-		stable = current_gen->next();	// This function will generate next gen
+		std::string current_hash = current_gen.hash(); // generate hash for this config
 
-		if( stable_count > 0 and stable == false )
-			// if the generation x was stable and generation x+1 wasn't, then
-			stable_count = 0;
+		
+		// will return true if the hash is on the hashes_table
+		size_t counter = 0;
+		bool status_hash = current_gen.check_hash( hashes_table, current_hash, MATCH_LIMIT, counter );
 
-		current_gen->update();	// Will update current gen to next gen
-
-		// This will print current generation based on:
-		// separator, alive_cells, dead_cells
-		current_gen->print(' ', '*', ' ');
-
-		if(stable == true)
-			stable_count++;
-
-		if(stable_count > 1)
-			// if in generation x and generation x+1 were stable, then break
+		if( status_hash )
+		{
+			current_gen.print(' ', '*', ' ');
+			std::cout << ">> Configuration is now stable/extint!" << std::endl;
 			break;
+		}
+		else
+		{
+			// adds current_hash to the hashes table
+			hashes_table.push_back( current_hash );
+			current_gen.print(' ', '*', ' ');
+
+			// Debug print for the current hash
+			std::cout << "~ SHA256: " << current_hash << std::dec;
+			std::cout << std::endl;
+
+			current_gen.next();	// This function will generate next gen
+			// current_gen.update();	// Will update current gen to next gen
+		}
 
 		// A simple timer, so we can interpret results
 		std::this_thread::sleep_for( std::chrono::milliseconds( 100 ) );
 	}
-	std::cout << "Simulation complete!" << std::endl;
-
-	// free of the allocated variables
-	delete current_gen;
+	std::cout << ">> Simulation finished!" << std::endl;
 
 	return 0;
 }

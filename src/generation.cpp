@@ -11,52 +11,44 @@ Gen::~Gen( void ){
 	delete this->screen;
 }
 
-bool Gen::next( void ){
-	int counter = 0; 	// A simple counter variable, to simplify things
-
-	// If the had_changed stays false in the entire function, it means that the
-	// generation is stable.
-	bool had_changed = false;
+void Gen::next( void ){
+	int nearby_counter = 0; 	// A simple counter variable, to simplify things
 
 	for( int i = 0; i < this->screen->height; i++ ){
 		for( int j = 0; j < this->screen->width; j++ ){
 			this->screen->pixel[i][j].nearby = check_nearby( i, j );	
-			counter = this->screen->pixel[i][j].nearby;
+			nearby_counter = this->screen->pixel[i][j].nearby;
 			bool is_alive = screen->pixel[i][j].is_alive();
 
-			if( counter <= 1 ){
+			if( nearby_counter <= 1 ){
 				// cell dies
-				had_changed = this->screen->pixel[i][j].set_next(false, had_changed);
+				this->screen->pixel[i][j].set_next(false);
 			}
 
-			else if( counter >= 4 and is_alive == true){
+			else if( nearby_counter >= 4 and is_alive == true){
 				// cell dies
-				had_changed = this->screen->pixel[i][j].set_next(false, had_changed);
+				this->screen->pixel[i][j].set_next(false);
 			}
 
-			else if( (counter == 2 or counter == 3) and is_alive == true){
+			else if( (nearby_counter == 2 or nearby_counter == 3) and is_alive == true){
 				// cell remains alive
-				had_changed = this->screen->pixel[i][j].set_next(true, had_changed);
+				this->screen->pixel[i][j].set_next(true);
 			}
 
-			else if( is_alive == false and counter == 3 ){
+			else if( is_alive == false and nearby_counter == 3 ){
 				// cell borns
-				had_changed = this->screen->pixel[i][j].set_next(true, had_changed);
+				this->screen->pixel[i][j].set_next(true);
 			}
 	
 			else {
 				// cell remains dead
-				had_changed = this->screen->pixel[i][j].set_next(false, had_changed);
+				this->screen->pixel[i][j].set_next(false);
 			}
 		}
 	}
-	if( had_changed == false ){
-		std::cout << "Stable / Extint!" << std::endl;
-		return true;	// it's stable } else {
-		std::cout << "Not Stable!" << std::endl;
-		return false;	// it's not stable
-	}
-	return false;
+
+	// calls the updater
+	this->update();
 }
 
 void Gen::update( void ){
@@ -69,11 +61,52 @@ void Gen::update( void ){
 
 void Gen::random_it( void ){
 	std::mt19937 random (std::chrono::system_clock::now().time_since_epoch().count());
-	for(int i = 0; i < screen->height; i++){
-		for(int j = 0; j < screen->width; j++){
-			screen->pixel[i][j].rand_alive(random() % 2, random() % 2);
+	for(int i = 0; i < this->screen->height; i++){
+		for(int j = 0; j < this->screen->width; j++){
+			this->screen->pixel[i][j].set_alive( random() % 2 );
 		}
 	}
+}
+
+
+std::string Gen::hash( void ){
+	// useful variables to simplify the code
+	int m_height = this->screen->height;
+	int m_width= this->screen->width;
+
+	int size = m_height * m_width;
+	char *seed = new char[size];
+	
+	// populate the seed
+	for( int i = 0; i < m_height; i++ ){
+		for( int j = 0; j < m_width; j++ ){
+			int value = this->screen->pixel[i][j].is_alive();
+			if( value == 0 ){
+				seed[i * m_height + j] = 'd';
+			} else {
+				seed[i * m_height + j] = 'a';
+			}
+		}
+	}
+	std::string gen_hash = sha256(seed);
+	// size_t gen_hash = std::hash<char*>{}(seed);
+	delete[] seed;
+
+	// return gen_hash; // STUB
+	return gen_hash;
+}
+
+bool Gen::check_hash( std::vector<std::string> &hash_table, std::string current_hash, size_t min_times, size_t &counter )
+{
+	for( auto i = hash_table.begin(); i != hash_table.end(); i++ ){
+		if(current_hash == *i){
+			counter++;
+			if( counter == min_times ){
+				return true;
+			}
+		}	
+	}
+	return false;
 }
 
 void Gen::print( char sep, char alive_c, char dead_c ){
