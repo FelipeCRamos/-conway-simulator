@@ -1,0 +1,7 @@
+first, compile generating an object file:
+> g++ -c main.cpp
+
+then, link the object file with the SMFL libs
+> g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
+
+
