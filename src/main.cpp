@@ -14,34 +14,43 @@
 
 #define argc_argv_debug 0	// on = argc & argv debug state (simulator off)
 #define FPS 1/3				// Frames per second of the simulator
-// #define RAND 0				// Turn this on if you want random generation
+
+#define RAND false			// Turn this on if you want random generation
+#define SIZE 50				// default random generation size
 
 int main( int argc, char **argv )
 {
-	if( argc != 2 )
+	Gen *current_gen;
+	if( argc != 2 and RAND == 0 )
 	{
 		std::cout << "\n\tInvalid format!\n";
 		std::cout << "\tUSE: ./conway <input_cfg_file>\n\n";
 		return 1;
 	}
-
-	std::ifstream config_file(argv[1]);		// create file stream
-
-	if(!config_file)
+	else if( argc == 2 and RAND == 0 )
 	{
-		std::cout << "\n\tPlease, inform a valid file.\n\n";
+		std::ifstream config_file(argv[1]);		// create file stream
+		if(!config_file)
+		{
+			std::cout << "\n\tPlease, inform a valid file.\n\n";
+			return 1;
+		}
+		current_gen = parse(config_file);	// parse file config's
+	}
+	else if( RAND == 1 )
+	{
+		current_gen = new Gen( SIZE );
+		current_gen->random_it(); 	// It will populate with random cells
+	}
+	else
+	{
+		std::cout << "Unknow bug, please report to felipecramos@lcc.ufrn.br\n";
 		return 1;
 	}
-
-	Gen *current_gen = parse(config_file);	// parse file config's
+		
 
 	const int MATCH_LIMIT = 1; 		// This defines with how many equals SHA256
 									// the program will stop
-
-	// Generation inicializer, use if you want to generate pseudo random cells
-	// To use, uncomment next 2 lines and comment the parse() line. (up)
-	// Gen *current_gen = new Gen( 30 );
-	// current_gen->random_it(); 	// It will populate with random cells
 
 	current_gen->hash(); 			// generates the first hash
 
@@ -52,11 +61,13 @@ int main( int argc, char **argv )
 		// Header
 		system("clear");
 		std::cout << ">> Generation Age: " << current_gen->age++ << std::endl;
-		std::string current_hash = current_gen->hash(); // generate hash for this config
 
-		
+		// generate hash for this config
+		std::string current_hash = current_gen->hash();
+
 		size_t counter = 0;
 		bool status_hash;
+
 		// A hasher function that returns if a hash is present on the table
 		status_hash = current_gen->check_hash( hashes_table,
 											   current_hash,

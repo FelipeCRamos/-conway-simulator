@@ -100,10 +100,12 @@ $(function() {
 <p>And write like the example from below:</p>
 <div class="fragment"><div class="line">height width</div><div class="line">alive_cell_char</div><div class="line">&lt;config&gt;</div></div><!-- fragment --><p>An example of a 5x5 with <code>*</code> representing the alive cells (anything different will be considered as a dead cell).</p>
 <div class="fragment"><div class="line">5 5</div><div class="line">*</div><div class="line">.*..*</div><div class="line">*..**</div><div class="line">***..</div><div class="line">...**</div><div class="line">*.*.*</div></div><!-- fragment --><h4>Random Generation</h4>
-<p>If you're a lazy person, and want to see big canvas screens populated by cells, you can give <code>random_it()</code> function a chance. Read the <code>src/main.cpp</code> file to know more.</p>
-<h3>Authorship</h3>
+<p>If you're a lazy person, and want to see big canvas screens populated by cells, you can give <code>random_it()</code> function a chance.</p>
+<p>All you need to do is go to the <code>main.cpp</code> file (located inside the <code>src</code> folder), and adjust on line <code>18</code>:</p>
+<div class="fragment"><div class="line">{c++}</div><div class="line">// Write instead of &#39;false&#39;, &#39;true&#39;</div><div class="line">#define RAND false</div><div class="line"></div><div class="line">// And adjust your desired size then</div><div class="line">#define SIZE 50 // Change 50 for what size you may want</div></div><!-- fragment --><p>And then, execute it by:</p>
+<div class="fragment"><div class="line">make; ./conway</div></div><!-- fragment --><h3>Authorship</h3>
 <p>This project was entirely made by Felipe Ramos with MIT license for the discipline of programming language I for the computer science course on <a href="http://ufrn.br">UFRN</a>.</p>
-<p><em>13/04/2018</em> </p>
+<p><em>19/04/2018</em> </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

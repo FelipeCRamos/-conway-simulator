@@ -79,10 +79,28 @@ An example of a 5x5 with `*` representing the alive cells (anything different wi
 
 #### Random Generation
 
-If you're a lazy person, and want to see big canvas screens populated by cells, you can give `random_it()` function a chance. Read the `src/main.cpp` file to know more. 
+If you're a lazy person, and want to see big canvas screens populated by cells, you can give `random_it()` function a chance. 
+
+All you need to do is go to the `main.cpp` file (located inside the `src` folder), and adjust on line `18`:
+
+```c++
+// Write instead of 'false', 'true'
+#define RAND false
+
+// And adjust your desired size then
+#define SIZE 50 // Change 50 for what size you may want
+```
+
+And then, execute it by:
+
+```bash
+make; ./conway
+```
+
+
 
 ### Authorship
 
 This project was entirely made by Felipe Ramos with MIT license for the discipline of programming language I for the computer science course on [UFRN](http://ufrn.br).
 
-*13/04/2018*
+*19/04/2018*

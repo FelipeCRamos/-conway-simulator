@@ -97,10 +97,31 @@ An example of a 5x5 with {\ttfamily $\ast$} representing the alive cells (anythi
 
 \paragraph*{Random Generation}
 
-If you\textquotesingle{}re a lazy person, and want to see big canvas screens populated by cells, you can give {\ttfamily random\+\_\+it()} function a chance. Read the {\ttfamily src/main.\+cpp} file to know more.
+If you\textquotesingle{}re a lazy person, and want to see big canvas screens populated by cells, you can give {\ttfamily random\+\_\+it()} function a chance.
+
+All you need to do is go to the {\ttfamily main.\+cpp} file (located inside the {\ttfamily src} folder), and adjust on line {\ttfamily 18}\+:
+
+
+\begin{DoxyCode}
+\{c++\}
+// Write instead of 'false', 'true'
+#define RAND false
+
+// And adjust your desired size then
+#define SIZE 50 // Change 50 for what size you may want
+\end{DoxyCode}
+
+
+And then, execute it by\+:
+
+
+\begin{DoxyCode}
+make; ./conway
+\end{DoxyCode}
+
 
 \subsubsection*{Authorship}
 
 This project was entirely made by Felipe Ramos with M\+IT license for the discipline of programming language I for the computer science course on \href{http://ufrn.br}{\tt U\+F\+RN}.
 
-{\itshape 13/04/2018} 
+{\itshape 19/04/2018} 
