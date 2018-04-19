@@ -12,12 +12,28 @@
 #include "canvas.hpp"
 #include "sha256.hpp"
 
+/*!
+ * \file Generation.hpp
+ * \brief Gen object related lib
+ * \author Felipe Ramos
+ */
+
+/*!
+ * \brief A simple class to store border limits and makes other functions calls
+ * smaller.
+ */
 class Borders{
 	public:
-		int xmin = -1, xmax = 1;
-		int ymin = -1, ymax = 1;
+		int xmin = -1;
+		int xmax = 1;
+		int ymin = -1;
+		int ymax = 1;
 };
 
+/*!
+ *  \brief A class to store the current generation variables and it's functions.
+ *  The current generation is a bidimensional array made by Cell object.
+ */ 
 class Gen{
 	public:
 		Canvas *screen;

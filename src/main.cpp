@@ -13,7 +13,8 @@
 #include "io.hpp"			// input operations
 
 #define argc_argv_debug 0	// on = argc & argv debug state (simulator off)
-#define FPS 1 				// Frames per second of the simulator
+#define FPS 1/3				// Frames per second of the simulator
+// #define RAND 0				// Turn this on if you want random generation
 
 int main( int argc, char **argv )
 {

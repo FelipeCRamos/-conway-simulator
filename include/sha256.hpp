@@ -5,7 +5,16 @@
 #ifndef SHA256_HPP_
 #define SHA256_HPP_
 #include <string>
+
+/*!
+ * \file SHA256.hpp
+ * \brief SHA256 object related lib
+ * \author Felipe Ramos
+ */
  
+/*!
+ * \brief SHA256 Object
+ */
 class SHA256{
 protected:
 	// Simplify things a little

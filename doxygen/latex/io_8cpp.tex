@@ -1,0 +1,42 @@
+\hypertarget{io_8cpp}{}\section{src/io.cpp File Reference}
+\label{io_8cpp}\index{src/io.\+cpp@{src/io.\+cpp}}
+
+
+Implementation of \mbox{\hyperlink{io_8hpp}{I\+O.\+hpp}} functions.  
+
+
+{\ttfamily \#include \char`\"{}io.\+hpp\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gen}{Gen}} $\ast$ \mbox{\hyperlink{io_8cpp_a97e9a729ed3371d5808a86c8d55b722b}{parse}} (std\+::ifstream \&config\+\_\+file)
+\begin{DoxyCompactList}\small\item\em It\textquotesingle{}s a parse function, responsible for reading the initial config file passed through the execution parameter ($\ast$$\ast$argv). It detects the Height and Width of the given canvas and then detects what is the {\ttfamily char} that will represent the alive cells. Anything different than the char, will be read as a dead cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of \mbox{\hyperlink{io_8hpp}{I\+O.\+hpp}} functions. 
+
+\begin{DoxyAuthor}{Author}
+Felipe Ramos 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{io_8cpp_a97e9a729ed3371d5808a86c8d55b722b}\label{io_8cpp_a97e9a729ed3371d5808a86c8d55b722b}} 
+\index{io.\+cpp@{io.\+cpp}!parse@{parse}}
+\index{parse@{parse}!io.\+cpp@{io.\+cpp}}
+\subsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_gen}{Gen}}$\ast$ parse (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{config\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+It\textquotesingle{}s a parse function, responsible for reading the initial config file passed through the execution parameter ($\ast$$\ast$argv). It detects the Height and Width of the given canvas and then detects what is the {\ttfamily char} that will represent the alive cells. Anything different than the char, will be read as a dead cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::ifstream} & \&config\+\_\+file \+: The std\+::ifstream object that is open on the main function.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \mbox{\hyperlink{class_gen}{Gen}} object config, already populated and ready for use. 
+\end{DoxyReturn}

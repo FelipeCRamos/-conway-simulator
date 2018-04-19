@@ -1,0 +1,114 @@
+\hypertarget{class_cell}{}\section{Cell Class Reference}
+\label{class_cell}\index{Cell@{Cell}}
+
+
+The \mbox{\hyperlink{class_cell}{Cell}} object, that represents a individual cell with some info about it.  
+
+
+
+
+{\ttfamily \#include $<$cell.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_cell_aab24f3f223f86c03968096edbd40a9f0}\label{class_cell_aab24f3f223f86c03968096edbd40a9f0}} 
+\mbox{\hyperlink{class_cell_aab24f3f223f86c03968096edbd40a9f0}{Cell}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_cell}{Cell}} object constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_cell_a7bd32ff9f08a21330169bb4d8cf09a46}{Cell}} (bool, bool)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_cell}{Cell}} object function that sets the current state and previous state of the cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cell_a4fc1b2e37891b5844cc11a0820ca6173}{set\+\_\+alive}} (bool)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_cell}{Cell}} object function that sets the current state of the cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cell_a25ca55e576079dda0ada13d21c817030}{set\+\_\+next}} (bool)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_cell}{Cell}} object function that sets the next value that the cell will have. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_abb40b623b840bc0c25e2808b695bc806}\label{class_cell_abb40b623b840bc0c25e2808b695bc806}} 
+void \mbox{\hyperlink{class_cell_abb40b623b840bc0c25e2808b695bc806}{update}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_cell}{Cell}} object function that is responsible to update current cell state to next cell state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cell_a289682e9815c9e72f85ee21153688d3f}{increment\+Age}} (int)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_cell}{Cell}} object function that will increment Cell.\+age by a given number. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_ab947cadfe0d070018a611604aa5a73ed}\label{class_cell_ab947cadfe0d070018a611604aa5a73ed}} 
+bool \mbox{\hyperlink{class_cell_ab947cadfe0d070018a611604aa5a73ed}{is\+\_\+alive}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_cell}{Cell}} object function that will tell if a \mbox{\hyperlink{class_cell}{Cell}} is alive. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_cell_a10947693e237e1cd547fd3cc8eea7501}\label{class_cell_a10947693e237e1cd547fd3cc8eea7501}} 
+int {\bfseries nearby}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{class_cell}{Cell}} object, that represents a individual cell with some info about it. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cell_a7bd32ff9f08a21330169bb4d8cf09a46}\label{class_cell_a7bd32ff9f08a21330169bb4d8cf09a46}} 
+\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{Cell()}{Cell()}}
+{\footnotesize\ttfamily Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{bool}]{current\+\_\+val,  }\item[{bool}]{prev\+\_\+val }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_cell}{Cell}} object function that sets the current state and previous state of the cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bool} & current\+\_\+val \+: the current value that will be set \\
+\hline
+{\em bool} & prev\+\_\+val \+: the previous value that will be set \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cell_a289682e9815c9e72f85ee21153688d3f}\label{class_cell_a289682e9815c9e72f85ee21153688d3f}} 
+\index{Cell@{Cell}!increment\+Age@{increment\+Age}}
+\index{increment\+Age@{increment\+Age}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{increment\+Age()}{incrementAge()}}
+{\footnotesize\ttfamily void Cell\+::increment\+Age (\begin{DoxyParamCaption}\item[{int}]{age\+Increment }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_cell}{Cell}} object function that will increment Cell.\+age by a given number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & age\+Increment \+: The number that will be += to the actual number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cell_a4fc1b2e37891b5844cc11a0820ca6173}\label{class_cell_a4fc1b2e37891b5844cc11a0820ca6173}} 
+\index{Cell@{Cell}!set\+\_\+alive@{set\+\_\+alive}}
+\index{set\+\_\+alive@{set\+\_\+alive}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{set\+\_\+alive()}{set\_alive()}}
+{\footnotesize\ttfamily void Cell\+::set\+\_\+alive (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_cell}{Cell}} object function that sets the current state of the cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bool} & value \+: That\textquotesingle{}s will be the bool value that the cell will recieve \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cell_a25ca55e576079dda0ada13d21c817030}\label{class_cell_a25ca55e576079dda0ada13d21c817030}} 
+\index{Cell@{Cell}!set\+\_\+next@{set\+\_\+next}}
+\index{set\+\_\+next@{set\+\_\+next}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{set\+\_\+next()}{set\_next()}}
+{\footnotesize\ttfamily void Cell\+::set\+\_\+next (\begin{DoxyParamCaption}\item[{bool}]{next\+\_\+val }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_cell}{Cell}} object function that sets the next value that the cell will have. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bool} & next\+\_\+val \+: The next value that the cell will have \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{cell_8hpp}{cell.\+hpp}}\item 
+src/\mbox{\hyperlink{cell_8cpp}{cell.\+cpp}}\end{DoxyCompactItemize}

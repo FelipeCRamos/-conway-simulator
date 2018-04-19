@@ -1,0 +1,87 @@
+\hypertarget{class_canvas}{}\section{Canvas Class Reference}
+\label{class_canvas}\index{Canvas@{Canvas}}
+
+
+Class to store all the \mbox{\hyperlink{class_cell}{Cell}} objects, like a real canvas.  
+
+
+
+
+{\ttfamily \#include $<$canvas.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_canvas_aabb8ad56107413ecd614a311079b95a3}{Canvas}} (int, int)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_canvas}{Canvas}} object constructor that takes width and height parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_canvas_a63c450c44bae6e3ff76a07ad0a15a750}\label{class_canvas_a63c450c44bae6e3ff76a07ad0a15a750}} 
+\mbox{\hyperlink{class_canvas_a63c450c44bae6e3ff76a07ad0a15a750}{$\sim$\+Canvas}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_canvas}{Canvas}} object destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_canvas_aaa8d62f6584a34128a28d33515d0c2a8}{print}} (char, char, char)
+\begin{DoxyCompactList}\small\item\em Prints the \mbox{\hyperlink{class_canvas}{Canvas}} object with the specified parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_canvas_a31434dcd520abfa1c1f3fb778514d173}\label{class_canvas_a31434dcd520abfa1c1f3fb778514d173}} 
+int {\bfseries width}
+\item 
+\mbox{\Hypertarget{class_canvas_aada7c1a775b50c422801d477e82a53ec}\label{class_canvas_aada7c1a775b50c422801d477e82a53ec}} 
+int {\bfseries height}
+\item 
+\mbox{\Hypertarget{class_canvas_a6aceffb7e2b6651380b60818ba77f834}\label{class_canvas_a6aceffb7e2b6651380b60818ba77f834}} 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$$\ast$ {\bfseries pixel}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class to store all the \mbox{\hyperlink{class_cell}{Cell}} objects, like a real canvas. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_canvas_aabb8ad56107413ecd614a311079b95a3}\label{class_canvas_aabb8ad56107413ecd614a311079b95a3}} 
+\index{Canvas@{Canvas}!Canvas@{Canvas}}
+\index{Canvas@{Canvas}!Canvas@{Canvas}}
+\subsubsection{\texorpdfstring{Canvas()}{Canvas()}}
+{\footnotesize\ttfamily Canvas\+::\+Canvas (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_canvas}{Canvas}} object constructor that takes width and height parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & x \+: Width parameter \\
+\hline
+{\em int} & y \+: Height parameter \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_canvas_aaa8d62f6584a34128a28d33515d0c2a8}\label{class_canvas_aaa8d62f6584a34128a28d33515d0c2a8}} 
+\index{Canvas@{Canvas}!print@{print}}
+\index{print@{print}!Canvas@{Canvas}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Canvas\+::print (\begin{DoxyParamCaption}\item[{char}]{separator,  }\item[{char}]{alive\+\_\+c,  }\item[{char}]{dead\+\_\+c }\end{DoxyParamCaption})}
+
+
+
+Prints the \mbox{\hyperlink{class_canvas}{Canvas}} object with the specified parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & separator \+: it\textquotesingle{}s the separator between alive and dead cells \\
+\hline
+{\em char} & alive\+\_\+c \+: The representation of an alive cell \\
+\hline
+{\em char} & dead\+\_\+c \+: The representation of an dead cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{canvas_8hpp}{canvas.\+hpp}}\item 
+src/\mbox{\hyperlink{canvas_8cpp}{canvas.\+cpp}}\end{DoxyCompactItemize}

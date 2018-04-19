@@ -1,0 +1,174 @@
+\hypertarget{class_gen}{}\section{Gen Class Reference}
+\label{class_gen}\index{Gen@{Gen}}
+
+
+A class to store the current generation variables and it\textquotesingle{}s functions. The current generation is a bidimensional array made by \mbox{\hyperlink{class_cell}{Cell}} object.  
+
+
+
+
+{\ttfamily \#include $<$generation.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_gen_acdae00bbb102fcf0a6f992c63844bd97}\label{class_gen_acdae00bbb102fcf0a6f992c63844bd97}} 
+\mbox{\hyperlink{class_gen_acdae00bbb102fcf0a6f992c63844bd97}{Gen}} (const int)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_gen}{Gen}} object constructor that recieves a unique size, creating a size$\ast$size array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_gen_a4f0a5bc8aef4821c976a850f3f94307b}{Gen}} (const int, const int)
+\begin{DoxyCompactList}\small\item\em Another \mbox{\hyperlink{class_gen}{Gen}} constructor, but it recieves two arguments and create a (x,y) bidimensional \mbox{\hyperlink{class_canvas}{Canvas}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gen_a6c42c5841cba31931c06406eddf14fc1}\label{class_gen_a6c42c5841cba31931c06406eddf14fc1}} 
+\mbox{\hyperlink{class_gen_a6c42c5841cba31931c06406eddf14fc1}{$\sim$\+Gen}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_gen}{Gen}} object destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gen_a98cf94512490100bc8fd5e68b4ebc4db}\label{class_gen_a98cf94512490100bc8fd5e68b4ebc4db}} 
+void \mbox{\hyperlink{class_gen_a98cf94512490100bc8fd5e68b4ebc4db}{next}} (void)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_gen}{Gen}} object next function, it\textquotesingle{}s resposible for generating and updating for the next generation (configuration). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gen_ae5caf53dba7416a655a8d7a2b0456834}\label{class_gen_ae5caf53dba7416a655a8d7a2b0456834}} 
+void \mbox{\hyperlink{class_gen_ae5caf53dba7416a655a8d7a2b0456834}{update}} (void)
+\begin{DoxyCompactList}\small\item\em Used inside the \`{}{\ttfamily \mbox{\hyperlink{class_gen_a98cf94512490100bc8fd5e68b4ebc4db}{Gen\+::next()}}} function, it\textquotesingle{}s responsible for update \mbox{\hyperlink{class_cell}{Cell}} object to the next value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gen_a478730331b639d3cfb3140c16bbc0976}\label{class_gen_a478730331b639d3cfb3140c16bbc0976}} 
+std\+::string \mbox{\hyperlink{class_gen_a478730331b639d3cfb3140c16bbc0976}{hash}} (void)
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{class_gen}{Gen}} object function that will generate a \mbox{\hyperlink{class_s_h_a256}{S\+H\+A256}} hash for each generation, in order to check stability of the current \mbox{\hyperlink{class_gen}{Gen}}, comparing it\textquotesingle{}s hash with the hash table list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_gen_a5886e4217cee1c1ad080e23134e8210a}{check\+\_\+hash}} (std\+::vector$<$ std\+::string $>$ \&hash\+\_\+table, std\+::string current\+\_\+hash, size\+\_\+t min\+\_\+times, size\+\_\+t \&counter)
+\begin{DoxyCompactList}\small\item\em This function will check if a given hash, in a given hash table will occur a minimum of times counted by a counter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_gen_adf50e03aa69e3bafb2627740621f1c63}\label{class_gen_adf50e03aa69e3bafb2627740621f1c63}} 
+void \mbox{\hyperlink{class_gen_adf50e03aa69e3bafb2627740621f1c63}{random\+\_\+it}} (void)
+\begin{DoxyCompactList}\small\item\em It will populate a generation with pseudo random values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gen_a9b0b1490241e3accfff88b127bdf839c}{print}} (char, char, char)
+\begin{DoxyCompactList}\small\item\em A print function that will call for \mbox{\hyperlink{class_canvas}{Canvas}} object print function. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_gen_a5594dd316d8de5ce9d621f04b73a988d}{count\+\_\+alives}} (void)
+\begin{DoxyCompactList}\small\item\em Alive cells counter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_gen_a0b7ca7ba7fb58a700d745ada96a8e802}{check\+\_\+nearby}} (int, int)
+\begin{DoxyCompactList}\small\item\em A function to check how many nearby cells are alive. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_borders}{Borders}} $\ast$ \mbox{\hyperlink{class_gen_a99f9fd1b5b81d1c65b5acf13c4d0f372}{correct\+\_\+borders}} (int, int, \mbox{\hyperlink{class_borders}{Borders}} $\ast$)
+\begin{DoxyCompactList}\small\item\em A secure function to make sure that when checking nearby cells, we dont throw a seg fault error (trying to acess anything beyond the size of the bimensional array) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_gen_a114b41253e5932e5fc346ca0214f94b0}\label{class_gen_a114b41253e5932e5fc346ca0214f94b0}} 
+\mbox{\hyperlink{class_canvas}{Canvas}} $\ast$ {\bfseries screen}
+\item 
+\mbox{\Hypertarget{class_gen_a4d77727ea35a66c69c2f57ca254556b4}\label{class_gen_a4d77727ea35a66c69c2f57ca254556b4}} 
+size\+\_\+t {\bfseries age} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class to store the current generation variables and it\textquotesingle{}s functions. The current generation is a bidimensional array made by \mbox{\hyperlink{class_cell}{Cell}} object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_gen_a4f0a5bc8aef4821c976a850f3f94307b}\label{class_gen_a4f0a5bc8aef4821c976a850f3f94307b}} 
+\index{Gen@{Gen}!Gen@{Gen}}
+\index{Gen@{Gen}!Gen@{Gen}}
+\subsubsection{\texorpdfstring{Gen()}{Gen()}}
+{\footnotesize\ttfamily Gen\+::\+Gen (\begin{DoxyParamCaption}\item[{const int}]{height,  }\item[{const int}]{width }\end{DoxyParamCaption})}
+
+
+
+Another \mbox{\hyperlink{class_gen}{Gen}} constructor, but it recieves two arguments and create a (x,y) bidimensional \mbox{\hyperlink{class_canvas}{Canvas}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & int height \+: The height of the bidimensional \mbox{\hyperlink{class_canvas}{Canvas}} object \\
+\hline
+{\em const} & int width \+: The width of the bidimensional \mbox{\hyperlink{class_canvas}{Canvas}} object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gen_a5886e4217cee1c1ad080e23134e8210a}\label{class_gen_a5886e4217cee1c1ad080e23134e8210a}} 
+\index{Gen@{Gen}!check\+\_\+hash@{check\+\_\+hash}}
+\index{check\+\_\+hash@{check\+\_\+hash}!Gen@{Gen}}
+\subsubsection{\texorpdfstring{check\+\_\+hash()}{check\_hash()}}
+{\footnotesize\ttfamily bool Gen\+::check\+\_\+hash (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{hash\+\_\+table,  }\item[{std\+::string}]{current\+\_\+hash,  }\item[{size\+\_\+t}]{min\+\_\+times,  }\item[{size\+\_\+t \&}]{counter }\end{DoxyParamCaption})}
+
+
+
+This function will check if a given hash, in a given hash table will occur a minimum of times counted by a counter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::vector$<$std\+::string$>$} & \&hash\+\_\+table \+: The vector that will store all hash tables already used. \\
+\hline
+{\em std\+::string} & current\+\_\+hash \+: The current hash that we\textquotesingle{}re comparing to see if we can found another min\+\_\+times equal hash. \\
+\hline
+{\em size\+\_\+t} & min\+\_\+times \+: The minimum of times that we need to find a given hash to tick the flag. \\
+\hline
+{\em size\+\_\+t} & \&counter \+: A counter referenced variable to check the min\+\_\+times \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gen_a0b7ca7ba7fb58a700d745ada96a8e802}\label{class_gen_a0b7ca7ba7fb58a700d745ada96a8e802}} 
+\index{Gen@{Gen}!check\+\_\+nearby@{check\+\_\+nearby}}
+\index{check\+\_\+nearby@{check\+\_\+nearby}!Gen@{Gen}}
+\subsubsection{\texorpdfstring{check\+\_\+nearby()}{check\_nearby()}}
+{\footnotesize\ttfamily int Gen\+::check\+\_\+nearby (\begin{DoxyParamCaption}\item[{int}]{height,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+
+
+A function to check how many nearby cells are alive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & height \+: Generation height, needed to make the corrections \\
+\hline
+{\em int} & width \+: Generation width, needed to make the corrections \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gen_a99f9fd1b5b81d1c65b5acf13c4d0f372}\label{class_gen_a99f9fd1b5b81d1c65b5acf13c4d0f372}} 
+\index{Gen@{Gen}!correct\+\_\+borders@{correct\+\_\+borders}}
+\index{correct\+\_\+borders@{correct\+\_\+borders}!Gen@{Gen}}
+\subsubsection{\texorpdfstring{correct\+\_\+borders()}{correct\_borders()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_borders}{Borders}} $\ast$ Gen\+::correct\+\_\+borders (\begin{DoxyParamCaption}\item[{int}]{height,  }\item[{int}]{width,  }\item[{\mbox{\hyperlink{class_borders}{Borders}} $\ast$}]{fix\+\_\+border }\end{DoxyParamCaption})}
+
+
+
+A secure function to make sure that when checking nearby cells, we dont throw a seg fault error (trying to acess anything beyond the size of the bimensional array) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & height \+: The height of current generation to check bounds \\
+\hline
+{\em int} & width \+: The width of current generation to check bounds \\
+\hline
+{\em \mbox{\hyperlink{class_borders}{Borders}}} & $\ast$fix\+\_\+border \+: the output borders to further math functions \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_gen_a5594dd316d8de5ce9d621f04b73a988d}\label{class_gen_a5594dd316d8de5ce9d621f04b73a988d}} 
+\index{Gen@{Gen}!count\+\_\+alives@{count\+\_\+alives}}
+\index{count\+\_\+alives@{count\+\_\+alives}!Gen@{Gen}}
+\subsubsection{\texorpdfstring{count\+\_\+alives()}{count\_alives()}}
+{\footnotesize\ttfamily size\+\_\+t Gen\+::count\+\_\+alives (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Alive cells counter. 
+
+\begin{DoxyReturn}{Returns}
+A size\+\_\+t value of alive cells in the entire generation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_gen_a9b0b1490241e3accfff88b127bdf839c}\label{class_gen_a9b0b1490241e3accfff88b127bdf839c}} 
+\index{Gen@{Gen}!print@{print}}
+\index{print@{print}!Gen@{Gen}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Gen\+::print (\begin{DoxyParamCaption}\item[{char}]{sep,  }\item[{char}]{alive\+\_\+c,  }\item[{char}]{dead\+\_\+c }\end{DoxyParamCaption})}
+
+
+
+A print function that will call for \mbox{\hyperlink{class_canvas}{Canvas}} object print function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & sep \+: A separator char that will be used between alive and dead cells \\
+\hline
+{\em char} & alive\+\_\+c \+: The alive representation char \\
+\hline
+{\em char} & dead\+\_\+c \+: The dead representation char \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{generation_8hpp}{generation.\+hpp}}\item 
+src/\mbox{\hyperlink{generation_8cpp}{generation.\+cpp}}\end{DoxyCompactItemize}

@@ -1,7 +1,25 @@
 #include "io.hpp"
 
+/*!
+ * \file IO.cpp
+ * \brief Implementation of IO.hpp functions
+ * \author Felipe Ramos
+ */
+
+/*!
+ * \brief It's a parse function, responsible for reading the initial config
+ * 		  file passed through the execution parameter (**argv).
+ * 		  It detects the Height and Width of the given canvas and then detects
+ * 		  what is the `char` that will represent the alive cells.
+ * 		  Anything different than the char, will be read as a dead cell.
+ * 
+ * \param std::ifstream &config_file : The std::ifstream object that is open
+ * 		  on the main function.
+ *
+ * \return a Gen object config, already populated and ready for use.
+ */
 Gen *parse( std::ifstream &config_file ){
-	std::string buf;
+	std::string buf; 
 	size_t line_counter = 0;
 
 	int h, w;
