@@ -1,10 +1,14 @@
+// Code originally made by some random guy in the internet
+// Ported the Conway's Game of Life Simulator Project
+// Author: FelipeCRamos
+
 #ifndef SHA256_HPP_
 #define SHA256_HPP_
 #include <string>
  
-class SHA256
-{
+class SHA256{
 protected:
+	// Simplify things a little
     typedef unsigned char uint8;
     typedef unsigned int uint32;
     typedef unsigned long long uint64;
@@ -12,6 +16,7 @@ protected:
     const static uint32 sha256_k[];
     static const unsigned int SHA224_256_BLOCK_SIZE = (512/8);
 public:
+	// "Constructor" for the function
     void init();
     void update(const unsigned char *message, unsigned int len);
     void final(unsigned char *digest);
@@ -27,6 +32,8 @@ protected:
  
 std::string sha256(std::string input);
  
+// Bunch of boring definitions to make the math
+// "Why preprocessing thigs?" - because it's faster 
 #define SHA2_SHFR(x, n)    (x >> n)
 #define SHA2_ROTR(x, n)   ((x >> n) | (x << ((sizeof(x) << 3) - n)))
 #define SHA2_ROTL(x, n)   ((x << n) | (x >> ((sizeof(x) << 3) - n)))

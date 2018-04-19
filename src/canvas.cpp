@@ -22,9 +22,9 @@ void Canvas::print( char separator, char alive_c, char dead_c ){
 	for( int i = 0; i < this->height; i++ ){
 		for( int j = 0; j < this->width; j++ ){
 			if( this->pixel[i][j].is_alive() == true ){
-				std::cout /* << this->pixel[i][j].nearby */ << alive_c << separator;
+				std::cout << alive_c << separator;
 			} else {
-				std::cout /* << this->pixel[i][j].nearby */ << dead_c << separator;
+				std::cout << dead_c << separator;
 			}
 		}
 		std::cout << std::endl;
