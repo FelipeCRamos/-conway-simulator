@@ -1,7 +1,7 @@
 # Conway's Game of Life simulator
 A programming language project that consists on the implementation of Conway's Game of Life using C++ language.
 
-Even with the word "game" in the name, it's not a iteractive play, instead, it's a simulation which we can observe the behavior of a given *config* of cells.
+Even with the word "game" in the name, it's not an iteractive play, instead, it's a simulation which we can observe the behavior of a given *config* of cells.
 
 ## Rules of the game
 1. If a cell is alive, but the number of nearby cells is **≤ 1**, on next generation it will **die by loneliness**.
@@ -79,13 +79,13 @@ An example of a 5x5 with `*` representing the alive cells (anything different wi
 
 #### Random Generation
 
-If you're a lazy person, and want to see big canvas screens populated by cells, you can give `random_it()` function a chance. 
+If you're a lazy person, and all you want to see is a big canvas screen populated by cells, you can give `random_it()` function a chance. 
 
-All you need to do is go to the `main.cpp` file (located inside the `src` folder), and adjust on line `18`:
+All you need to do is edit the `main.cpp` file (located inside the `src` folder), and adjust on line `18`:
 
 ```c++
 // Write instead of 'false', 'true'
-#define RAND false
+#define RAND false 		// Line 18
 
 // And adjust your desired size then
 #define SIZE 50 // Change 50 for what size you may want
@@ -94,7 +94,7 @@ All you need to do is go to the `main.cpp` file (located inside the `src` folder
 And then, execute it by:
 
 ```bash
-make; ./conway
+make; ./conway 		# without the file arg
 ```
 
 
